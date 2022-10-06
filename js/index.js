@@ -72,10 +72,6 @@ $(document).ready(() => {
         playPauseAudio();
     }
 
-    function seek(value) {
-        let seekto = player.duration * (value / 100);
-        player.currentTime = seekto;
-    }
 
 
     startplayer();
@@ -87,3 +83,7 @@ $(document).ready(() => {
         $('#album-title').text($(this).siblings(".album-name").text());
     });
 });
+function seek(value) {
+    let seekto = player.duration * (value / 100);
+    player.currentTime = seekto;
+}
