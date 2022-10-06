@@ -104,21 +104,31 @@
                     <img src="./assets/cd.png" width="100%" alt="cd">
                 </div>
                 <div class="col-6">
-                    <h2>Now playing</h2>
-                    <h3>Sruprise Without flaws</h3>
-                    <p>01. Clouds In The Forest</p>
-                    <div class="d-flex justify-content-between">
+                    <div class="current-song">
+                        <h2>Now playing</h2>
+                        <h3 id="album-title">Sruprise Without flaws</h3>
+                        <p id="song-title">01. Clouds In The Forest</p>
+                    </div>
+                    <div class="d-flex player-control song justify-content-between">
+                        <!-- <div id="song_6" class="song d-flex justify-content-between">
+                            <div class="song-name d-flex">
+                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <span>06. Criminals Of The Lake</span>
+                            </div>
+                            <div class="song-duation">2:55</div>
+                        </div> -->
                         <div class="backward-icon"><i class="fa-sharp fa-solid fa-backward"></i></div>
-                        <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                        <div class="play-pause-icon init"><i class="fa-sharp fa-solid fa-play"></i></div>
                         <div class="forward-icon"><i class="fa-sharp fa-solid fa-forward"></i></div>
                     </div>
                     <div class="playback-progress">
-                        <input type="range" class="form-range" min="1" max="100" step="1" id="customRange3">
+                        <input type="range" class="form-range" min="1" value="0" max="100" step="1" id="seekAudio"
+                            onchange="seek(this.value)">
                     </div>
                     <div class="player">
                         <audio id="music-player">
                             <source class="music-player-source"
-                                src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3" />
+                                src="http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3" />
                         </audio>
                     </div>
                 </div>
@@ -170,63 +180,63 @@
                     <div class="play-list d-flex flex-column">
                         <div id="song_1" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>01. Clouds In The Forest</span>
                             </div>
                             <div class="song-duation">3:20</div>
                         </div>
                         <div id="song_2" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>02. Rat In The River</span>
                             </div>
                             <div class="song-duation">2:48</div>
                         </div>
                         <div id="song_3" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>03. Giants And Companions</span>
                             </div>
                             <div class="song-duation">2:27</div>
                         </div>
                         <div id="song_4" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>04. Ashamed Of Light</span>
                             </div>
                             <div class="song-duation">3:32</div>
                         </div>
                         <div id="song_5" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>05. Doubting The Forest</span>
                             </div>
                             <div class="song-duation">2:40</div>
                         </div>
                         <div id="song_6" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>06. Criminals Of The Lake</span>
                             </div>
                             <div class="song-duation">2:55</div>
                         </div>
                         <div id="song_7" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>07. Curse Of Eternity</span>
                             </div>
                             <div class="song-duation">1:33</div>
                         </div>
                         <div id="song_8" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>08. Fog In My Town</span>
                             </div>
                             <div class="song-duation">1:33</div>
                         </div>
                         <div id="song_9" class="song d-flex justify-content-between">
                             <div class="song-name d-flex">
-                                <div class="play-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
+                                <div class="play-pause-icon"><i class="fa-sharp fa-solid fa-play"></i></div>
                                 <span>09. Serpent In The Mountains</span>
                             </div>
                             <div class="song-duation">3:24</div>
