@@ -19,9 +19,6 @@ $(document).ready(() => {
         song_9:
             'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3',
     };
-    let seletedSong = $("#song-title");
-
-
 
     function startplayer() {
         player = $('#music-player')[0];
@@ -32,6 +29,13 @@ $(document).ready(() => {
         if ($(this).hasClass('playing')) {
             $('.play-pause-icon').removeClass('playing');
             $('.play-pause-icon').find('i').addClass('fa-pause');
+            $('.play-pause-icon').each(function (index) {
+                if ($("#song-title").text() === $(this).siblings("span").text()) {
+                    $(".play-control .play-pause-icon").removeClass("playing")
+                    $(".play-control .play-pause-icon i").removeClass('fa-pause').addClass('fa-play');
+                    $(this).find('i').removeClass('fa-pause').addClass('fa-play');
+                }
+            })
             $(this).find('i').removeClass('fa-pause').addClass('fa-play');
             player.pause();
         }
@@ -41,18 +45,22 @@ $(document).ready(() => {
             $('.play-pause-icon').find('i').addClass('fa-play');
             $(this).find('i').removeClass('fa-play').addClass('fa-pause');
             if (!$(this).hasClass('init')) {
-                seletedSong.text($(this).siblings("span").text());
+                $("#song-title").text($(this).siblings("span").text());
                 player.setAttribute('src', audioOptions[$(this).closest('.song')[0].id]);
             }
+            $('.play-pause-icon').each(function (index) {
+                if ($("#song-title").text() === $(this).siblings("span").text()) {
+                    $(".play-control .play-pause-icon").addClass("playing")
+                    $(".play-control .play-pause-icon i").removeClass('fa-play').addClass('fa-pause');
+                    $(this).find('i').removeClass('fa-play').addClass('fa-pause');
+                }
+            })
+
             player.play();
         }
     }
 
-    function change_vol() {
-        player.volume = document.getElementById('change_vol').value;
-    }
     function seek(value) {
-        console.log(value)
         let seekto = player.duration * (value / 100);
         player.currentTime = seekto;
     }
@@ -61,4 +69,7 @@ $(document).ready(() => {
     startplayer();
 
     $('.play-pause-icon').click(playPauseAudio);
+    $('.listen').click(function () {
+        $('#album-title').text($(this).siblings(".album-name").text());
+    });
 });
