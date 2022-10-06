@@ -1,4 +1,5 @@
 $(document).ready(() => {
+
     const audioOptions = {
         song_1:
             'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3',
@@ -19,13 +20,16 @@ $(document).ready(() => {
         song_9:
             'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3',
     };
-
+    let songIndex = 1
+    let selectedSong = audioOptions["song_" + songIndex];
     function startplayer() {
         player = $('#music-player')[0];
         player.controls = false;
     }
 
     function playPauseAudio() {
+        songIndex = $(this).closest('.song')[0].id;
+        selectedSong = audioOptions["song_" + songIndex];
         if ($(this).hasClass('playing')) {
             $('.play-pause-icon').removeClass('playing');
             $('.play-pause-icon').find('i').addClass('fa-pause');
@@ -46,7 +50,7 @@ $(document).ready(() => {
             $(this).find('i').removeClass('fa-play').addClass('fa-pause');
             if (!$(this).hasClass('init')) {
                 $("#song-title").text($(this).siblings("span").text());
-                player.setAttribute('src', audioOptions[$(this).closest('.song')[0].id]);
+                player.setAttribute('src', selectedSong);
             }
             $('.play-pause-icon').each(function (index) {
                 if ($("#song-title").text() === $(this).siblings("span").text()) {
@@ -60,6 +64,14 @@ $(document).ready(() => {
         }
     }
 
+    function previousSong() {
+
+    }
+    function nextSong() {
+        selectedSong = audioOptions[`song_${++songIndex}`]
+        playPauseAudio();
+    }
+
     function seek(value) {
         let seekto = player.duration * (value / 100);
         player.currentTime = seekto;
@@ -69,6 +81,8 @@ $(document).ready(() => {
     startplayer();
 
     $('.play-pause-icon').click(playPauseAudio);
+    $('.forward-icon').click(nextSong);
+    $('.backward-icon').click(previousSong);
     $('.listen').click(function () {
         $('#album-title').text($(this).siblings(".album-name").text());
     });
